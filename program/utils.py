@@ -12,13 +12,13 @@ def step_1(path_excel_file):
         del book['Модели_Элементы']
     s3 = book.create_sheet('Модели_Элементы')
 
-    models = list(s1.values)  
+    models = list(s1.values)
     matrix_0 = list(s2.values) 
 
     selectionsets_list = []
     for i in models:
         for j in matrix_0:
-            if i[1] == j[0]:
+            if i[1] == j[0] and j[0].strip() != "" and j[1].strip() != "":
                 selectionsets_list.append([i[1], i[0] + '-' + j[1], i[0], j[1]])
 
     for i in range(len(selectionsets_list)):
