@@ -61,8 +61,16 @@ class Interface():
         self.function2_button.grid(row=4, column=0, padx=(10, 0), pady=10)
 
         # Текстовое поле
-        self.file_list_box = tk.Listbox(self.root, height=5, width=100)
-        self.file_list_box.grid(row=5, column=1, padx=(10, 0), pady=10)
+        file_list_frame = tk.Frame(self.root)
+        file_list_frame.grid(row=5, column=1, padx=(10, 0), pady=10)
+
+        self.file_list_box = tk.Listbox(file_list_frame, height=5, width=100)
+        scrollbar = tk.Scrollbar(file_list_frame,
+            orient="horizontal", command=self.file_list_box.xview)
+        
+        self.file_list_box.config(xscrollcommand=scrollbar.set)
+        self.file_list_box.grid(row=1, column=1, padx=(10, 0), pady=10, sticky="nsew")
+        scrollbar.grid(row=2, column=1, padx=(10, 0), sticky="ew")
 
         self.habr_link  = Label(self.root, text="Инструкция", fg="blue", cursor="hand2")
         self.habr_link.grid(row=6, column=0)
