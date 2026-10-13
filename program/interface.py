@@ -46,8 +46,8 @@ class Interface():
         self.file_label.grid(row=1, column=1, padx=(10, 10))
 
         # Кнопка выбора папки
-        self.folder_path = tk.Button(self.root, text="Выбрать папку для сохранение xml", command=self.select_folder)
-        self.folder_path.grid(row=2, column=0, padx=(10, 0), pady=10)
+        self.folder_path_button = tk.Button(self.root, text="Выбрать папку для сохранение xml", command=self.select_folder)
+        self.folder_path_button.grid(row=2, column=0, padx=(10, 0), pady=10)
         # Текст для передачи пути к файлу
         self.folder_label = tk.Label(self.root, text="", width=80)
         self.folder_label.grid(row=2, column=1, padx=(10, 10))
