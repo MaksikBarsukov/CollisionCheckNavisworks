@@ -27,7 +27,11 @@ def step_1(path_excel_file):
         s3.cell(row=i + 1, column=3, value=selectionsets_list[i][2])
         s3.cell(row=i + 1, column=4, value=selectionsets_list[i][3])
 
-    book.save(path_excel_file)
+    try:
+        book.save(path_excel_file)
+    except PermissionError:
+        raise PermissionError("Файл: " + path_excel_file + 
+            " занят другим процессом. Закройте файл и повторите попытку")
 
 def step_2(path_excel_file, folder_xml_file):
 
@@ -124,4 +128,8 @@ def step_2(path_excel_file, folder_xml_file):
     xml_doc_selectionsets = open(f'{folder_xml_file}/Поисковые наборы.xml', 'w', encoding='utf-8')
     xml_doc_selectionsets.write(xml_selectionsets)
 
-    book.save(path_excel_file)
+    try:
+        book.save(path_excel_file)
+    except PermissionError:
+        raise PermissionError("Файл: " + path_excel_file + 
+            " занят другим процессом. Закройте файл и повторите попытку")
