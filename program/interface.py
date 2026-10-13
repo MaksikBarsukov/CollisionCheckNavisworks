@@ -28,6 +28,9 @@ class Interface():
     def open_link_github(self, event=None):
         webbrowser.open("https://github.com/i-savelev/CollisionCheckNavisworks")
 
+    def open_link_github_current(self, event=None):
+        webbrowser.open("https://github.com/barmaksis/CollisionCheckNavisworks.git")
+
     def set_button_function1(self):
         self.func1(self.file_path, self.file_list_box)
 
@@ -73,11 +76,14 @@ class Interface():
         scrollbar.grid(row=2, column=1, padx=(10, 0), sticky="ew")
 
         self.habr_link  = Label(self.root, text="Инструкция", fg="blue", cursor="hand2")
-        self.habr_link.grid(row=6, column=0)
-        self.github_link  = Label(self.root, text="Github", fg="blue", cursor="hand2")
+        self.habr_link.grid(row=6, column=0, rowspan=2, sticky="nsew")
+        self.github_link  = Label(self.root, text="Original Github repo", fg="blue", cursor="hand2")
         self.github_link.grid(row=6, column=1)
+        self.github_link_current = Label(self.root, text="Current Github fork", fg="blue", cursor="hand2")
+        self.github_link_current.grid(row=7, column=1)
 
         self.habr_link.bind("<Button-1>", self.open_link_habr)
         self.github_link.bind("<Button-1>", self.open_link_github)
+        self.github_link_current.bind("<Button-1>", self.open_link_github_current)
 
         self.root.mainloop()
